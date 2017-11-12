@@ -7,11 +7,13 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'fatih/vim-go'
 
 " A better file explorer
 Plugin 'scrooloose/nerdTree'
 
+
+" Golang stuff
+Plugin 'fatih/vim-go'
 
 call vundle#end()       
 filetype plugin indent on
@@ -26,13 +28,16 @@ set ruler
 set nu
 set nowrap
 syn on
-filetype plugin indent on
+set visualbell
+set t_vt=
+
 
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs and spaces
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
