@@ -15,6 +15,9 @@ Plugin 'scrooloose/nerdTree'
 " Golang stuff
 Plugin 'fatih/vim-go'
 
+" Match tag
+Plugin 'valloric/MatchTagAlways'
+
 call vundle#end()       
 filetype plugin indent on
 
@@ -74,6 +77,8 @@ map <leader>s :w<cr>
 map <leader>p "+p
 map <leader>a gT
 map <leader>s gt
+map <leader>e :NERDTreeToggle<cr>
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
