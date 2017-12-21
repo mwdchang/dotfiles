@@ -18,6 +18,10 @@ Plugin 'fatih/vim-go'
 " Match tag
 Plugin 'valloric/MatchTagAlways'
 
+" Solarized
+Plugin 'altercation/vim-colors-solarized'
+
+
 call vundle#end()       
 filetype plugin indent on
 
