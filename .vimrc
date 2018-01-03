@@ -11,6 +11,9 @@ Plugin 'VundleVim/Vundle.vim'
 " A better file explorer
 Plugin 'scrooloose/nerdTree'
 
+" Git plugin for Nerdtree
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
+
 
 " Golang stuff
 Plugin 'fatih/vim-go'
@@ -20,6 +23,9 @@ Plugin 'valloric/MatchTagAlways'
 
 " Solarized
 Plugin 'altercation/vim-colors-solarized'
+
+" Vue syntax highlighting
+Plugin 'posva/vim-vue'
 
 
 call vundle#end()       
@@ -83,6 +89,8 @@ map <leader>a gT
 map <leader>s gt
 map <leader>e :NERDTreeToggle<cr>
 
+" shift + asterisk
+map * *``
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
