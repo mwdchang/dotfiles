@@ -27,8 +27,12 @@ Plugin 'altercation/vim-colors-solarized'
 " Vue syntax highlighting
 Plugin 'posva/vim-vue'
 
+" Editor config
+Plugin 'editorconfig/editorconfig-vim'
 
-call vundle#end()       
+
+
+call vundle#end()
 filetype plugin indent on
 
 
@@ -89,12 +93,36 @@ map <leader>a gT
 map <leader>s gt
 map <leader>e :NERDTreeToggle<cr>
 
-" shift + asterisk
+" Format JSON via python
+map <leader>j :%!python -m json.tool<cr>
+
+" shift + asterisk, don't jump to next matching token
 map * *``
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Autocmd
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Convert tabs to spaces on save
+" autocmd BufWritePre * %s/\s\+$//e
+
+
+" Close window if NERDTree is the last panel
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Things to do on start
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=a
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
+
 retab
 color desert
