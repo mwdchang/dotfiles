@@ -126,3 +126,7 @@ end
 
 retab
 color desert
+
+" Tweak search highlight
+highlight Search guibg=darkgreen guifg=green gui=underline
+
