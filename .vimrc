@@ -30,6 +30,15 @@ Plugin 'posva/vim-vue'
 " Editor config
 Plugin 'editorconfig/editorconfig-vim'
 
+" Status line
+Plugin 'itchyny/lightline.vim'
+
+" Surround
+Plugin 'tpope/vim-surround'
+
+" Runtime linter
+Plugin 'w0rp/ale'
+
 
 
 call vundle#end()
@@ -117,6 +126,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Things to do on start
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Enable light line plugin
+set laststatus=2
+let g:lightline = { 'colorscheme': 'seoul256' }
+
+
 set mouse=a
 if has("mouse_sgr")
     set ttymouse=sgr
@@ -127,6 +142,8 @@ end
 retab
 color desert
 
+
 " Tweak search highlight
 highlight Search guibg=darkgreen guifg=green gui=underline
+
 
