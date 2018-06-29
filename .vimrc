@@ -11,7 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 " A better file explorer
 Plugin 'scrooloose/nerdTree'
 
-" Git plugin for Nerdtree
+" Git plugin for Nerdtree ( meh .... kind of a mess )
 " Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 
@@ -105,6 +105,10 @@ map <leader>e :NERDTreeToggle<cr>
 " Format JSON via python
 map <leader>j :%!python -m json.tool<cr>
 
+" Turn on/off ALE
+map <leader>l :ALEToggle<cr>
+
+
 " shift + asterisk, don't jump to next matching token
 map * *``
 
@@ -136,7 +140,9 @@ set mouse=a
 if has("mouse_sgr")
     set ttymouse=sgr
 else
-    set ttymouse=xterm2
+    if !has('nvim')
+        set ttymouse=xterm2
+    endif
 end
 
 retab

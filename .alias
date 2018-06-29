@@ -1,0 +1,2 @@
+alias git-commit-stats="git shortlog -s -n"
+alias git-branch-stat="git diff --stat master"
