@@ -39,6 +39,9 @@ Plugin 'tpope/vim-surround'
 " Runtime linter
 Plugin 'w0rp/ale'
 
+" Marks sidebar (Seems to get int the way of ALE)
+" Plugin 'Yilin-Yang/vim-markbar'
+
 
 
 call vundle#end()
@@ -102,16 +105,33 @@ map <leader>a gT
 map <leader>s gt
 map <leader>e :NERDTreeToggle<cr>
 
+" change/yank/delete in tag
+map <leader>cc cit<Esc>
+map <leader>yy yit<Esc>
+map <leader>dd dit<Esc>
+
+" nmap <Leader>m <Plug>ToggleMarkbar
+
+
 " Format JSON via python
 map <leader>j :%!python -m json.tool<cr>
 
 " Turn on/off ALE
 map <leader>l :ALEToggle<cr>
 
+" Formatting
+map <leader>f mzgg=G'z
+
 
 " shift + asterisk, don't jump to next matching token
 map * *``
 
+" place of last edit
+map <leader>h '.
+
+
+" expand shebang
+inoremap #! #!/usr/bin/env bash
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -151,5 +171,3 @@ color desert
 
 " Tweak search highlight
 highlight Search guibg=darkgreen guifg=green gui=underline
-
-
