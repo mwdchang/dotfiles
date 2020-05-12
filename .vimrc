@@ -14,7 +14,6 @@ Plugin 'scrooloose/nerdTree'
 " Git plugin for Nerdtree ( meh .... kind of a mess )
 " Plugin 'Xuyuanp/nerdtree-git-plugin'
 
-
 " Golang stuff
 Plugin 'fatih/vim-go'
 
@@ -43,10 +42,8 @@ Plugin 'w0rp/ale'
 " Plugin 'Yilin-Yang/vim-markbar'
 
 
-
 call vundle#end()
 filetype plugin indent on
-
 
 
 
@@ -59,8 +56,6 @@ set nowrap
 syn on
 set visualbell
 set t_vt=
-
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -79,7 +74,6 @@ set expandtab
 set nobackup       " no backup files
 set nowritebackup  " only in case you don't want a backup file while editing
 set noswapfile     " no swap files
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -110,8 +104,14 @@ map <leader>cc cit<Esc>
 map <leader>yy yit<Esc>
 map <leader>dd dit<Esc>
 
-" nmap <Leader>m <Plug>ToggleMarkbar
+" Marks
+" Lowercase marks jump within file, uppercase marks jumps between files
+" - m<a> mark at register a
+" - `<a> jump to a
+map <leader>m `
 
+" vim-markbar
+" nmap <Leader>m <Plug>ToggleMarkbar
 
 " Format JSON via python
 map <leader>j :%!python -m json.tool<cr>
@@ -122,12 +122,12 @@ map <leader>l :ALEToggle<cr>
 " Formatting
 map <leader>f mzgg=G'z
 
-
 " shift + asterisk, don't jump to next matching token
 map * *``
 
-" place of last edit
+" jump to place of last edit
 map <leader>h '.
+
 
 
 " expand shebang
@@ -137,10 +137,8 @@ inoremap #! #!/usr/bin/env bash
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocmd
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Convert tabs to spaces on save
 " autocmd BufWritePre * %s/\s\+$//e
-
 
 " Close window if NERDTree is the last panel
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -150,6 +148,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Things to do on start
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set guifont=Inconsolata:h13
+
 
 " Enable light line plugin
 set laststatus=2
@@ -167,6 +167,18 @@ end
 
 retab
 color desert
+
+" :setlocal spell spelllang=en_us
+set spellfile=$HOME/.vim/en.utf-8.add
+
+
+" Need to regenerate spell file
+" mkspell! $HOME/.vim/en.utf-8.add
+
+
+
+" For vue files
+autocmd FileType vue syntax sync fromstart
 
 
 " Tweak search highlight
