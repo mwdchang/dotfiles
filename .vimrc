@@ -180,6 +180,11 @@ set spellfile=$HOME/.vim/en.utf-8.add
 " For vue files
 autocmd FileType vue syntax sync fromstart
 
+" Disable syntax highlight for large buffers
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
+
+
+
 
 " Tweak search highlight
 highlight Search guibg=darkgreen guifg=green gui=underline
