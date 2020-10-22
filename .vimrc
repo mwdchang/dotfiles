@@ -20,8 +20,11 @@ Plugin 'fatih/vim-go'
 " Match tag
 Plugin 'valloric/MatchTagAlways'
 
-" Solarized
+" Solarized (Color scheme)
 Plugin 'altercation/vim-colors-solarized'
+
+" Candid (Color scheme)
+Plugin 'flrnd/candid.vim'
 
 " Vue syntax highlighting
 Plugin 'posva/vim-vue'
@@ -37,6 +40,9 @@ Plugin 'tpope/vim-surround'
 
 " Runtime linter
 Plugin 'w0rp/ale'
+
+" Indent lines (show indent levels)
+Plugin 'Yggdroot/indentLine'
 
 " Marks sidebar (Seems to get int the way of ALE)
 " Plugin 'Yilin-Yang/vim-markbar'
@@ -156,6 +162,14 @@ set laststatus=2
 let g:lightline = { 'colorscheme': 'seoul256' }
 
 
+" IndentLine settings, disabled by default, use 'IndentLineToggle' to toggle
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#888888'
+let g:indentLine_char_list = ['┊']
+let g:indentLine_enabled = 0
+
+
+
 set mouse=a
 if has("mouse_sgr")
     set ttymouse=sgr
@@ -184,6 +198,9 @@ autocmd FileType vue syntax sync fromstart
 autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
 
 
+" Line stuff
+" set cursorline
+" set cursorcolumn
 
 
 " Tweak search highlight
