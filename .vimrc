@@ -2,56 +2,55 @@ set nocompatible
 filetype off
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle related things
+" vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
 " A better file explorer
-Plugin 'scrooloose/nerdTree'
+Plug 'scrooloose/nerdTree'
 
 " Git plugin for Nerdtree ( meh .... kind of a mess )
 " Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " Golang stuff
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
 " Match tag
-Plugin 'valloric/MatchTagAlways'
+Plug 'valloric/MatchTagAlways'
 
 " Solarized (Color scheme)
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
 " Candid (Color scheme)
-Plugin 'flrnd/candid.vim'
+Plug 'flrnd/candid.vim'
 
 " Vue syntax highlighting
-Plugin 'posva/vim-vue'
+Plug 'posva/vim-vue'
 
 " Editor config
-Plugin 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " Status line
-Plugin 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 
 " Surround
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Runtime linter
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " Indent lines (show indent levels)
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 
 " Marks sidebar (Seems to get int the way of ALE)
 " Plugin 'Yilin-Yang/vim-markbar'
 
+" Initialize plugin system
+call plug#end()
 
-call vundle#end()
+
 filetype plugin indent on
-
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
