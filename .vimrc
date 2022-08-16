@@ -1,7 +1,7 @@
 "" TODO
 " :CocInstall coc-vetur
 " :CocInstall coc-tsserver
-"" 
+""
 
 set nocompatible
 filetype off
