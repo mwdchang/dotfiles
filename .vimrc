@@ -1,3 +1,8 @@
+"" TODO
+" :CocInstall coc-vetur
+" :CocInstall coc-tsserver
+""
+
 set nocompatible
 filetype off
 
@@ -28,6 +33,9 @@ Plug 'flrnd/candid.vim'
 " Vue syntax highlighting
 Plug 'posva/vim-vue'
 
+" Julia syntax highlighting
+Plug 'JuliaEditorSupport/julia-vim'
+
 " Editor config
 Plug 'editorconfig/editorconfig-vim'
 
@@ -45,6 +53,10 @@ Plug 'Yggdroot/indentLine'
 
 " Marks sidebar (Seems to get int the way of ALE)
 " Plugin 'Yilin-Yang/vim-markbar'
+
+
+" Python3 syntax highlighting
+Plug 'vim-python/python-syntax'
 
 
 " Code completion
@@ -165,7 +177,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Things to do on start
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set guifont=Inconsolata:h13
+set guifont=Inconsolata:h15
 
 
 " Enable light line plugin
@@ -178,6 +190,9 @@ let g:lightline = { 'colorscheme': 'PaperColor_dark' }
 
 " NerdTree ignore file types
 let NERDTreeIgnore = ['\.pyc$']
+
+" Python plugin
+let g:python_highlight_all = 1
 
 
 
@@ -215,6 +230,8 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" COC
+set pumheight=30
 
 set mouse=a
 if has("mouse_sgr")
