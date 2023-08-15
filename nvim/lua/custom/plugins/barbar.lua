@@ -12,7 +12,8 @@ return {
     insert_at_end = true,
     minimum_padding = 1,
     sidebar_filetypes = {
-      ['neo-tree'] = { event = 'BufWipeout' },
+      NvimTree = true,
+      -- ['neo-tree'] = { event = 'BufWipeout' },
     },
     no_name_title = '???'
   }

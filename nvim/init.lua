@@ -110,7 +110,9 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
+  --[[ this is annoying
   { 'folke/which-key.nvim', opts = {} },
+  ]]
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -154,6 +156,7 @@ require('lazy').setup({
     },
   },
 
+  --[[ this is annoying
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -164,6 +167,7 @@ require('lazy').setup({
       show_trailing_blankline_indent = false,
     },
   },
+  ]]
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -245,8 +249,8 @@ vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+vim.o.updatetime = 200
+vim.o.timeoutlen = 250
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -530,7 +534,7 @@ cmp.setup {
 -- Custom key mapping
 local options = { noremap = true }
 
-vim.keymap.set('n', '<leader>e', ':Neotree toggle<cr>', options)
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>', options)
 vim.keymap.set('n', '<leader>s', ':w<CR>', options)
 vim.keymap.set('n', '<leader>j', ':!python -m json.tool<CR>', options)
 
@@ -567,6 +571,7 @@ set.softtabstop = 2
 set.expandtab = true
 set.cursorline = false
 set.wrap = false
+set.swapfile = false
 
 
 -- Color
