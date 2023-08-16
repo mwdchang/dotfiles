@@ -113,6 +113,8 @@ require('lazy').setup({
   --[[ this is annoying
   { 'folke/which-key.nvim', opts = {} },
   ]]
+
+  --[[
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -132,6 +134,7 @@ require('lazy').setup({
       end,
     },
   },
+  ]]
 
   {
     -- Theme inspired by Atom
@@ -170,7 +173,9 @@ require('lazy').setup({
   ]]
 
   -- "gc" to comment visual regions/lines
+  --[[
   { 'numToStr/Comment.nvim', opts = {} },
+  ]]
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -572,6 +577,9 @@ set.expandtab = true
 set.cursorline = false
 set.wrap = false
 set.swapfile = false
+set.smartindent = true
+set.autoindent = true
+set.incsearch = false
 
 
 -- Color
