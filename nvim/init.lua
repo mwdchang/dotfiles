@@ -448,8 +448,10 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
+  volar = {
+    filetypes = { 'typescript', 'javascript', 'vue', 'json' }
+  },
   tsserver = {},
-  volar = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
@@ -470,12 +472,23 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
+require('neoconf').setup({})
+
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
 
 mason_lspconfig.setup_handlers {
   function(server_name)
+
+    -- See https://theosteiner.de/using-volars-takeover-mode-in-neovims-native-lsp-client
+    if require("neoconf").get(server_name .. ".disable") then
+      print('project override', server_name)
+      return
+    else
+      print(server_name)
+    end
+
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
