@@ -372,15 +372,15 @@ require('nvim-treesitter.configs').setup {
         ['[]'] = '@class.outer',
       },
     },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
-    },
+    -- swap = {
+    --   enable = true,
+    --   swap_next = {
+    --     ['<leader>a'] = '@parameter.inner',
+    --   },
+    --   swap_previous = {
+    --     ['<leader>A'] = '@parameter.inner',
+    --   },
+    -- },
   },
 }
 
@@ -483,10 +483,10 @@ mason_lspconfig.setup_handlers {
 
     -- See https://theosteiner.de/using-volars-takeover-mode-in-neovims-native-lsp-client
     if require("neoconf").get(server_name .. ".disable") then
-      print('project override', server_name)
+      print('project lsp override, disable', server_name)
       return
     else
-      print(server_name)
+      print('loading lsp', server_name)
     end
 
     require('lspconfig')[server_name].setup {
@@ -570,6 +570,13 @@ vim.keymap.set('i', ';;', '<esc>', options)
 -- Jump to last edit
 vim.keymap.set('n', '<leader>h', "'.", options)
 
+
+-- Close everything except the current buffer
+vim.keymap.set('n', '<leader>c', "<Cmd>w | %bd | e#<CR>", options)
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, options)
+
+
+
 -- Tab movement
 -- vim.keymap.set('n', '<leader>a', 'gT', options)
 -- vim.keymap.set('n', '<leader>s', 'gt', options)
@@ -578,7 +585,7 @@ vim.keymap.set('n', '<leader>s', '<Cmd>BufferNext<CR>', options)
 
 -- interactive expansions
 vim.keymap.set('i', '#!', '#!usr/bin/env/bash', options)
-vim.keymap.set('i', '#e', '// eslint-disable-next-line', options)
+vim.keymap.set('i', '#E', '// eslint-disable-next-line', options)
 
 
 -- Config settings
