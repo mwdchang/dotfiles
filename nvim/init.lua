@@ -554,7 +554,9 @@ local options = { noremap = true }
 
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>', options)
 vim.keymap.set('n', '<leader>s', ':w<CR>', options)
+vim.keymap.set('n', '<leader>jq', ':%!jq .<CR>', options)
 vim.keymap.set('n', '<leader>j', ':!python -m json.tool<CR>', options)
+-- :%!jq .
 
 -- Toggles
 vim.keymap.set('n', '<leader>ii', ':IndentBlanklineToggle<CR>', options)
