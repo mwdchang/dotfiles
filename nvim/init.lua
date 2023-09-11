@@ -286,14 +286,27 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+--
+local actions = require("telescope.actions")
 require('telescope').setup {
   defaults = {
     mappings = {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
+        -- DC mod
+        ['<esc>'] = actions.close
       },
     },
+    -- DC mod
+    path_display = {
+      "shorten"
+    },
+    layout_config = {
+      horizontal = {
+        width = 0.8
+      }
+    }
   },
 }
 
@@ -586,7 +599,7 @@ vim.keymap.set('n', '<leader>a', '<Cmd>BufferPrevious<CR>', options)
 vim.keymap.set('n', '<leader>s', '<Cmd>BufferNext<CR>', options)
 
 -- interactive expansions
-vim.keymap.set('i', '#!', '#!usr/bin/env/bash', options)
+vim.keymap.set('i', '#!', '#!/usr/bin/env bash', options)
 vim.keymap.set('i', '#E', '// eslint-disable-next-line', options)
 
 
