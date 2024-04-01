@@ -456,17 +456,43 @@ end
 --
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
+--
+
+
+-- ## Need to install TS plugin
+-- Goto ~/.local/share/nvim/mason/packages/vue-language-server
+-- Run npm i @vue/typescript-plugin
+local mason_registry = require('mason-registry')
+local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+
 local servers = {
   -- clangd = {},
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  volar = {
-    filetypes = { 'typescript', 'javascript', 'vue', 'json' }
-  },
-  tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
+  -- volar = {
+  --   filetypes = { 'typescript', 'javascript', 'vue', 'json' }
+  -- },
+  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  tsserver = {
+    init_options = {
+      plugins = {
+        {
+          name = '@vue/typescript-plugin',
+          location = vue_language_server_path,
+          languages = { 'vue' },
+        },
+      },
+    },
+  },
+  volar = {
+    init_options = {
+      vue = {
+        hybridMode = false,
+      },
+    },
+  },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -495,18 +521,19 @@ mason_lspconfig.setup_handlers {
   function(server_name)
 
     -- See https://theosteiner.de/using-volars-takeover-mode-in-neovims-native-lsp-client
-    if require("neoconf").get(server_name .. ".disable") then
-      print('project lsp override, disable', server_name)
-      return
-    else
-      print('loading lsp', server_name)
-    end
+    -- if require("neoconf").get(server_name .. ".disable") then
+    --   print('project lsp override, disable', server_name)
+    --   return
+    -- else
+    --   print('loading lsp', server_name)
+    -- end
 
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
+      init_options = servers[server_name].init_options,
     }
   end
 }
