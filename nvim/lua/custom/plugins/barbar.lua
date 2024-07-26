@@ -1,4 +1,3 @@
---[[
 return {
   'romgrk/barbar.nvim',
   dependencies = {
@@ -19,5 +18,5 @@ return {
     no_name_title = '???'
   }
 }
-]]
-return {}
+
+-- return {}
