@@ -618,6 +618,10 @@ vim.keymap.set('n', '<leader>c', "<Cmd>w | %bd | e#<CR>", options)
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, options)
 
 
+-- Copy buffer
+vim.keymap.set('n', '<leader>y', 'gg"+yG', options)
+
+
 
 -- Tab movement
 -- vim.keymap.set('n', '<leader>a', 'gT', options)
@@ -665,3 +669,8 @@ vim.api.nvim_create_autocmd("QuitPre", {
 
 -- Color
 vim.cmd('colorscheme desert')
+
+if (vim.g.colors_name == 'desert') then
+  vim.api.nvim_set_hl(0, 'LineNr', { fg = '#cccc22'} )
+  -- vim.api.nvim_set_hl(0, 'LineNr', { fg = '#00FF00'} )
+end
