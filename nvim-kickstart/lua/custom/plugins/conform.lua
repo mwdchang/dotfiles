@@ -1,3 +1,4 @@
+--[[
 return { -- Autoformat
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
@@ -34,4 +35,9 @@ return { -- Autoformat
       -- javascript = { { "prettierd", "prettier" } },
     },
   },
+}
+]]
+--
+--
+return {
 }
