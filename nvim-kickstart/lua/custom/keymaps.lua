@@ -28,3 +28,7 @@ vim.keymap.set('n', '<leader>y', 'gg"+yG', options)
 -- Useful for copying UUID under cursor
 vim.api.nvim_set_keymap('n', '<leader>u', [[:silent execute "normal! viW" <Bar> "zy:<C-R>z<CR>"]], { noremap = true, silent = true })
 
+
+-- hashbang
+vim.cmd([[iab #! #!/usr/bin/env bash]])
+
