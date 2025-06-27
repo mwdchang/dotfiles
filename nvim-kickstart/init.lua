@@ -309,11 +309,30 @@ set.incsearch = false
 vim.b.miniindentscope_disable = true
 
 -- Default colors
-vim.cmd 'colorscheme desert'
-if vim.g.colors_name == 'desert' then
+vim.cmd 'colorscheme everforest'
+if vim.g.colors_name == 'everforest' then
   vim.api.nvim_set_hl(0, 'LineNr', { fg = '#11cc22' })
   -- vim.api.nvim_set_hl(0, 'LineNr', { fg = '#00FF00'} )
 end
+
+
+-- vim.api.nvim_create_autocmd('Colorscheme', {
+--   group = vim.api.nvim_create_augroup('config_custom_highlights', {}),
+--   callback = function()
+--     -- Current tab colour adjustments for barbar.nvim
+--     vim.api.nvim_set_hl(0, 'BufferCurrent', {bg = '#44475A'})
+--     vim.api.nvim_set_hl(0, 'BufferCurrentSign', {bg = '#44475A'})
+--     vim.api.nvim_set_hl(0, 'BufferCurrentMod', {bg = '#44475A'})
+--   end,
+-- })
+
+-- barbar
+vim.api.nvim_set_hl(0, 'BufferCurrent', {bg = '#44675A'})
+vim.api.nvim_set_hl(0, 'BufferCurrentSign', {bg = '#44675A'})
+vim.api.nvim_set_hl(0, 'BufferCurrentMod', {bg = '#44675A'})
+
+vim.lsp.enable('vue_ls')
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
