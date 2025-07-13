@@ -1,15 +1,26 @@
 -- gutter line number highlight --
-vim.api.nvim_set_hl(0, 'FunctionLineNumber', { fg = '#aaeeee', bg = '#888888' }) -- Orange
+vim.api.nvim_set_hl(0, 'FunctionLineNumber', { fg = '#88dddd', bg = '#555555' })
 local ns = vim.api.nvim_create_namespace 'FunctionLineHighlight'
 
 local ts_utils = require 'nvim-treesitter.ts_utils'
+
+-- Sections that will trigger the gutter hightlights
+local highlight_table = {
+  function_definition = true,
+  function_declaration = true,
+  for_statement = true,
+  while_statement = true,
+  if_statement = true,
+  block = true,
+}
 
 local function highlight_function_lines()
   vim.api.nvim_buf_clear_namespace(0, ns, 0, -1) -- clear previous
 
   local node = ts_utils.get_node_at_cursor()
   while node do
-    if node:type() == 'function_definition' or node:type() == 'function_declaration' then
+    -- if node:type() == 'function_definition' or node:type() == 'function_declaration' then
+    if highlight_table[node:type()] then
       local start_row, _, end_row, _ = node:range()
       for lnum = start_row, end_row do
         vim.api.nvim_buf_set_extmark(0, ns, lnum, 0, {
