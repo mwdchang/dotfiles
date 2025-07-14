@@ -1,5 +1,15 @@
 -- gutter line number highlight --
-vim.api.nvim_set_hl(0, 'FunctionLineNumber', { fg = '#88dddd', bg = '#555555' })
+local fg = '#88dddd'
+local bg = '#555555'
+
+-- Re-apply custom highlight group after colorscheme change
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = function()
+    vim.api.nvim_set_hl(0, 'FunctionLineNumber', { fg = fg, bg = bg })
+  end,
+})
+
+vim.api.nvim_set_hl(0, 'FunctionLineNumber', { fg = fg, bg = bg })
 local ns = vim.api.nvim_create_namespace 'FunctionLineHighlight'
 
 local ts_utils = require 'nvim-treesitter.ts_utils'
