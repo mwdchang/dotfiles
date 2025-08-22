@@ -4,14 +4,6 @@ local function options_fn(desc)
   return options
 end
 
--- Highlight gutter lines when inside functions
-local fn_context = require 'custom.function-context'
-vim.keymap.set('n', '<leader>fn', fn_context.toggle_fn_context, options_fn 'function indicators in gutter')
-
--- Wordcount
-local word_count = require 'custom.word-count'
-vim.keymap.set('n', '<leader>W', word_count.word_count, options_fn 'char/word/line counts')
-
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>', options)
 vim.keymap.set('n', '<leader>s', ':w<CR>', options)
 vim.keymap.set('n', '<leader>jq', ':%!jq .<CR>', options)
@@ -35,7 +27,7 @@ vim.keymap.set('n', '<leader>c', '<Cmd>w | %bd | e#<CR>', options)
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, options)
 
 -- Copy buffer
-vim.keymap.set('n', '<leader>y', 'gg"+yG', options)
+vim.keymap.set('n', '<leader>y', 'gg"+yG', options_fn 'yank buffer')
 
 -- Useful for copying UUID under cursor
 vim.api.nvim_set_keymap('n', '<leader>u', [[:silent execute "normal! viW" <Bar> "zy:<C-R>z<CR>"]], { noremap = true, silent = true })

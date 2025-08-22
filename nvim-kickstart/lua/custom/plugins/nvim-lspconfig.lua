@@ -1,6 +1,10 @@
+-- Seems like someone broke TS-lspconfig
+-- See: https://github.com/neovim/nvim-lspconfig/commit/5f1c9a90c8db9c647da40ce6cf5be9e49ccbf0c7
+--      using the commit before works
 return {
   -- Main LSP Configuration
   'neovim/nvim-lspconfig',
+  commit = '61fdd3a8609071ce44519e405f3424d84ec94d9d',
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
     -- Mason must be loaded before its dependents so we need to set it up here.

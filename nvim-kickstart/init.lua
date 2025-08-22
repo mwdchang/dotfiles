@@ -288,7 +288,9 @@ require('lazy').setup({
   },
 })
 
-require 'custom.keymaps'
+
+
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
@@ -328,3 +330,45 @@ vim.api.nvim_set_hl(0, 'BufferCurrentMod', { bg = '#44675A' })
 -----------------------------
 -----------------------------
 -----------------------------
+
+
+require 'custom.keymaps'
+local util = require 'custom.util'
+
+-- custom module: Buffer wordcount
+local word_count = require 'custom.word-count'
+vim.keymap.set('n', '<leader>W', word_count.word_count, { desc = 'char/word/line counts' })
+
+-- custom module: Yank by scope
+local scope_yank = require 'custom.scope-yank'
+vim.keymap.set("n", "<leader>Y", scope_yank.scope_yank, { desc = "Smart Yank (by scope)" })
+
+-- custom module: color picker
+local colour_picker = require 'custom.colour-picker'
+vim.keymap.set("n", "<leader>cs", colour_picker.pick_colorscheme, { desc = "colorscheme picker" })
+
+-- custom module; fn context
+local function_context = require 'custom.function-context'
+vim.keymap.set('n', '<leader>fn', function_context.toggle_fn_context, { desc = 'function indicators in gutter' })
+
+
+require("lspconfig").pylsp.setup({
+  on_attach = on_attach,
+  cmd_env = {
+    VIRTUAL_ENV = os.getenv("PYTHON_VENV"),
+    PATH = util.concat_paths(os.getenv("PYTHON_PATH"), os.getenv("PATH")),
+    PYTHONPATH = os.getenv("PYTHON_PYTHONPATH")
+  },
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = { enabled = true },
+        pylint = { enabled = false },
+        flake8 = { enabled = true },
+        mypy = { enabled = true },
+        yapf = { enabled = false },
+        black = { enabled = true },
+      },
+    },
+  },
+})
