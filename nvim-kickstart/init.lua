@@ -332,6 +332,8 @@ vim.api.nvim_set_hl(0, 'BufferCurrentMod', { bg = '#44675A' })
 -----------------------------
 
 
+require('custom.transparency').setup()
+
 require 'custom.keymaps'
 local util = require 'custom.util'
 
@@ -364,11 +366,35 @@ require("lspconfig").pylsp.setup({
       plugins = {
         pycodestyle = { enabled = true },
         pylint = { enabled = false },
-        flake8 = { enabled = true },
-        mypy = { enabled = true },
+        flake8 = { enabled = false },
+        pylsp_mypy = { enabled = true },
         yapf = { enabled = false },
         black = { enabled = true },
       },
     },
   },
 })
+
+
+
+-- require("codecompanion").setup({
+--   adapters = {
+--     http = {
+--       ollama = function()
+--         return require("codecompanion.adapters").extend("ollama", {
+--           env = {
+--             url = "https://10.64.22.60:11434",
+--             api_key = "OLLAMA_API_KEY",
+--           },
+--           headers = {
+--             ["Content-Type"] = "application/json",
+--             ["Authorization"] = "Bearer ${api_key}",
+--           },
+--           parameters = {
+--             sync = true,
+--           },
+--         })
+--       end,
+--     },
+--   },
+-- })

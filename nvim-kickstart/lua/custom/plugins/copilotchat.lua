@@ -9,7 +9,7 @@ return {
     opts = {
       -- See Configuration section for options
     },
-    -- enabled = false,
+    enabled = false,
     -- See Commands section for default commands if you want to lazy load on them
   },
 }
