@@ -27,6 +27,7 @@ return {
         http = {
           ollama = function()
             return require("codecompanion.adapters").extend("ollama", {
+              -- Model not really used, overridden by strategies
               model = { 'mistral:latest' },
               env = {
                 url = "http://10.64.22.60:11434",
