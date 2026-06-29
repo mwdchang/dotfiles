@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 vim.api.nvim_set_hl(0, 'FunctionLineNumber', { fg = fg, bg = bg })
 local ns = vim.api.nvim_create_namespace 'FunctionLineHighlight'
 
-local ts_utils = require 'nvim-treesitter.ts_utils'
+-- local ts_utils = require 'nvim-treesitter.ts_utils'
 
 -- Sections that will trigger the gutter hightlights
 local highlight_table = {
@@ -22,12 +22,14 @@ local highlight_table = {
   while_statement = true,
   if_statement = true,
   block = true,
+  arrow_function = true,
 }
 
 local function highlight_function_lines()
   vim.api.nvim_buf_clear_namespace(0, ns, 0, -1) -- clear previous
 
-  local node = ts_utils.get_node_at_cursor()
+  -- local node = ts_utils.get_node_at_cursor()
+  local node = vim.treesitter.get_node()
   while node do
     -- if node:type() == 'function_definition' or node:type() == 'function_declaration' then
     if highlight_table[node:type()] then

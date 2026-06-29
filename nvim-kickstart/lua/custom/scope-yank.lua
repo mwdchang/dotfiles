@@ -1,13 +1,14 @@
 local M = {}
 
-local ts_utils = require("nvim-treesitter.ts_utils")
+-- local ts_utils = require("nvim-treesitter.ts_utils")
 
 --[[
 Yanks content from specific scopes for blocks, based on treesitter
 --]]
 function M.scope_yank()
   local bufnr = vim.api.nvim_get_current_buf()
-  local node = ts_utils.get_node_at_cursor()
+  -- local node = ts_utils.get_node_at_cursor()
+  local node = vim.treesitter.get_node()
 
   -- Expanded list of scope-defining nodes across multiple languages
   local valid_nodes = {
